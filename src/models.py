@@ -21,8 +21,8 @@ class Publicate(Base):
     __tablename__ = 'publicate'
     id = Column(Integer, primary_key=True)
     archive_url = Column(String(450))
-    date_publicate = Column(db.String(120), nullable=True)
-    user_id = Column(Integer, db.ForeignKey('user.id'))
+    date_publicate = Column(String(120), nullable=True)
+    user_id = Column(Integer, ForeignKey('user.id'))
     
     def to_dict(self):
         return {}
@@ -30,8 +30,8 @@ class Publicate(Base):
 class Comment(Base):
     __tablename__ = 'comment'
     id = Column(Integer, primary_key=True)
-    user_id_publicate = Column(Integer, db.ForeignKey('user.id'))
-    id_publicate = Column(Integer, db.ForeignKey('publicate.user_id'))
+    user_id_publicate = Column(Integer, ForeignKey('user.id'))
+    id_publicate = Column(Integer, ForeignKey('publicate.user_id'))
     
     def to_dict(self):
         return {}
@@ -39,8 +39,8 @@ class Comment(Base):
 class Follow(Base):
     __tablename__ = 'follow'
     id = Column(Integer, primary_key=True)
-    user_id_ppl = Column(Integer, db.ForeignKey('user.id'))
-    user_id_follow = Column(Integer, db.ForeignKey('user.id'))
+    user_id_ppl = Column(Integer, ForeignKey('user.id'))
+    user_id_follow = Column(Integer, ForeignKey('user.id'))
     
     def to_dict(self):
         return {}
